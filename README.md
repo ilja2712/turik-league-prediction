@@ -1,1 +1,0 @@
-# turik-league-prediction
