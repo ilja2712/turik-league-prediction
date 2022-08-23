@@ -1,13 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Users = sequelize.define("users", {
-    id: {
-      type: Sequelize.NUMBER,
-      primaryKey: true
-    },
-    name: {
-      type: Sequelize.STRING
-    },
-    login: {
+    username: {
       type: Sequelize.STRING
     },
     email: {
@@ -15,9 +8,6 @@ module.exports = (sequelize, Sequelize) => {
     },
     password: {
       type: Sequelize.STRING
-    },
-    root: {
-      type: Sequelize.BOOLEAN
     }
   });
 

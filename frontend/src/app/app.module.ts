@@ -5,16 +5,26 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddUserComponent } from './components/add-user/add-user.component';
-import { UserDetailsComponent } from './components/user-details/user-details.component';
-import { UsersListComponent } from './components/users-list/users-list.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddUserComponent,
-    UserDetailsComponent,
-    UsersListComponent
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +32,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
