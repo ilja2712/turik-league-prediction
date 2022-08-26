@@ -1,0 +1,8 @@
+<nb-card size="small">
+    <nb-list>
+      <nb-list-item *ngFor="let user of users">
+        <nb-user name="{{user.username}}" title="{{user.email}}">
+        </nb-user>
+      </nb-list-item>
+    </nb-list>
+  </nb-card>

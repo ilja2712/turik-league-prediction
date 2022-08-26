@@ -1,5 +1,10 @@
 <div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+  <nb-tabset>
+    <nb-tab tabTitle="Пользователи">
+      <app-users-list></app-users-list>
+    </nb-tab>
+    <nb-tab tabTitle="Заявки">
+      <app-users-request></app-users-request>
+    </nb-tab>
+   </nb-tabset>
 </div>

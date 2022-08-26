@@ -13,7 +13,11 @@ exports.signup = (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8)
+    password: bcrypt.hashSync(req.body.password, 8),
+    command_name: req.body.command_name,
+    birthday: req.body.birthday,
+    gender: req.body.gender,
+    confirm_reg: req.body.confirm_reg
   })
     .then(user => {
       if (req.body.roles) {

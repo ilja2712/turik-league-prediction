@@ -1,41 +1,38 @@
-<div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">bezKoder</a>
-    <ul class="navbar-nav mr-auto" routerLinkActive="active">
-      <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
-      </li>
-      <li class="nav-item" *ngIf="showAdminBoard">
-        <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-      </li>
-      <li class="nav-item" *ngIf="showModeratorBoard">
-        <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-      </li>
-      <li class="nav-item">
-        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-      </li>
-    </ul>
+<nb-layout>
 
-    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
-      </li>
-    </ul>
+  <nb-layout-header fixed>
+      <nb-icon (click)="toggleSidebar()" class="sidebar-toggle" icon="menu-2-outline"></nb-icon>
+      <h3>League predictions</h3>
+      <div class="col-md-5"></div>
+      <nb-actions *ngIf="isLoggedIn">
+        <nb-action>
+            <nb-user [nbContextMenu]="menu_users"
+                    nbContextMenuTag="my-context-menu"
+                    name="{{username}}"
+                    title="{{role}}">
+            </nb-user>
+        </nb-action>
+      </nb-actions>
+      <nb-actions *ngIf="!isLoggedIn">
+        <nb-action>
+          <a href="/register" nbButton status="info">Регистрация</a>
+        </nb-action>
+        <nb-action>
+          <a href="/login" nbButton status="info">Вход</a>
+        </nb-action>
+      </nb-actions>
+  </nb-layout-header>
 
-    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-      </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="container">
+  <nb-sidebar class="menu-sidebar" responsive start>
+    <nb-menu [items]="items"></nb-menu>
+  </nb-sidebar>
+    
+  <nb-layout-column>
     <router-outlet></router-outlet>
-  </div>
-</div>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    Prediction league by KozlikovIO (c)
+  </nb-layout-footer>
+
+</nb-layout>

@@ -30,3 +30,16 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+
+.fullcenter {
+  position: absolute;
+  top: 25%;
+  left: 30%;
+}
+
+.btn-small-center {
+  width: 50%;
+  position: absolute;
+  left: 25%;
+}
+

@@ -8,6 +8,18 @@ module.exports = (sequelize, Sequelize) => {
     },
     password: {
       type: Sequelize.STRING
+    },
+    command_name: {
+      type: Sequelize.STRING
+    },
+    birthday: {
+      type: Sequelize.STRING
+    },
+    gender: {
+      type: Sequelize.STRING
+    },
+    confirm_reg: {
+      type: Sequelize.BOOLEAN
     }
   });
 

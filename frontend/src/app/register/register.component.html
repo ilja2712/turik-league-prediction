@@ -1,10 +1,11 @@
 <div class="col-md-12">
-  <div class="card card-container">
-    <img
-      id="profile-img"
-      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-      class="profile-img-card"
-    />
+  <nb-card>
+    <nb-card-header>
+      <h4>
+        Регистрация
+      </h4>
+    </nb-card-header>
+    <nb-card-body>
     <form
       *ngIf="!isSuccessful"
       name="form"
@@ -12,8 +13,9 @@
       #f="ngForm"
       novalidate
     >
+    <div class="col-md-6 onelineField">
       <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username">Логин</label>
         <input
           type="text"
           class="form-control"
@@ -25,12 +27,12 @@
           #username="ngModel"
         />
         <div class="alert-danger" *ngIf="username.errors && f.submitted">
-          <div *ngIf="username.errors['required']">Username is required</div>
+          <div *ngIf="username.errors['required']">Логин обязателен!</div>
           <div *ngIf="username.errors['minlength']">
-            Username must be at least 3 characters
+            Логин не менее 3 символов!
           </div>
           <div *ngIf="username.errors['maxlength']">
-            Username must be at most 20 characters
+            Логин не более 20 символов!
           </div>
         </div>
       </div>
@@ -46,14 +48,14 @@
           #email="ngModel"
         />
         <div class="alert-danger" *ngIf="email.errors && f.submitted">
-          <div *ngIf="email.errors['required']">Email is required</div>
+          <div *ngIf="email.errors['required']">Адрес электронной почты обязателен!</div>
           <div *ngIf="email.errors['email']">
-            Email must be a valid email address
+            Не валидный адрес электронной почты!
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Пароль</label>
         <input
           type="password"
           class="form-control"
@@ -64,23 +66,68 @@
           #password="ngModel"
         />
         <div class="alert-danger" *ngIf="password.errors && f.submitted">
-          <div *ngIf="password.errors['required']">Password is required</div>
+          <div *ngIf="password.errors['required']">Пароль обязателен!</div>
           <div *ngIf="password.errors['minlength']">
-            Password must be at least 6 characters
+            Пароль должен включать не менее 6 символов!
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 onelineField">
+      <div class="form-group">
+        <label for="command_name">Название команды</label>
+        <input
+          type="text"
+          class="form-control"
+          name="command_name"
+          [(ngModel)]="form.command_name"
+          required
+          minlength="5"
+          maxlength="20"
+          #command_name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="username.errors && f.submitted">
+          <div *ngIf="username.errors['required']">Указать команду обязательно!</div>
+          <div *ngIf="username.errors['minlength']">
+            Название команды не менее 5 символов!
+          </div>
+          <div *ngIf="username.errors['maxlength']">
+            Название команды не более 20 символов!
           </div>
         </div>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary btn-block">Sign Up</button>
+        <label for="birthday">Дата рождения</label>
+        <input name="birthday" [nbDatepicker]="datepicker" [(ngModel)]="form.birthday" class="form-control" #birthday="ngModel">
+        <nb-datepicker #datepicker></nb-datepicker>
       </div>
+      <div class="form-group">
+        <label for="gender">Пол</label>
+        <nb-select name="gender" [(ngModel)]="form.gender" [(selected)]="form.gender" #gender="ngModel">
+          <nb-option value="Мужской">Мужской</nb-option>
+          <nb-option value="Женский">Женский</nb-option>
+        </nb-select>
+      </div>
+    </div>
+    <nb-card-footer>
+      <div class="col-md-3 oneline"></div>
+      <div class="col-md-6 oneline">
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Регистрация</button>
+      </div> 
 
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-        Signup failed!<br />{{ errorMessage }}
+        Регистрация не удалась!<br />{{ errorMessage }}
       </div>
+    </div>
+    <div class="col-md-3 oneline"></div>
+    </nb-card-footer>
     </form>
 
     <div class="alert alert-success" *ngIf="isSuccessful">
-      Your registration is successful!
+      Регистрация прошла успешно! Мы отправим вам сообщение на почту о подтверждении регистрации!
+      После чего вы сможете авторизоваться в своей УЗ!
     </div>
-  </div>
+  </nb-card-body>
+  </nb-card>
 </div>

@@ -14,6 +14,11 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NbThemeModule, NbLayoutModule, NbTabsetModule, NbIconModule, NbSidebarModule, NbMenuModule, NbActionsModule, NbUserModule, NbContextMenuModule, NbButtonModule, NbCardModule, NbDatepickerModule, NbSelectModule, NbTreeGridModule, NbListModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { UsersListComponent } from './board-admin/users-list/users-list.component';
+import { UsersRequestComponent } from './board-admin/users-request/users-request.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +29,31 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    UsersListComponent,
+    UsersRequestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NbThemeModule.forRoot({ name: 'dark' }),
+    NbActionsModule,
+    NbListModule,
+    NbContextMenuModule,
+    NbCardModule,
+    NbDatepickerModule.forRoot(),
+    NbUserModule,
+    NbSelectModule,
+    NbTabsetModule,
+    NbButtonModule,
+    NbIconModule,
+    NbSidebarModule.forRoot(),
+    NbMenuModule.forRoot(),
+    NbLayoutModule,
+    NbEvaIconsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

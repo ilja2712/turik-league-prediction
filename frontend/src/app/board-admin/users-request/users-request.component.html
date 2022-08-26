@@ -1,0 +1,17 @@
+<nb-card size="small">
+    <nb-list>
+      <nb-list-item *ngFor="let user of users">
+        <nb-user name="{{user.username}}" title="{{user.email}}">
+        </nb-user>
+        <div class="col-md-7"></div>
+        <div class="col-md-5 inline">
+            <div class="col-md-4">
+                <button nbButton (click)="confirmEmail(user.username!)" size="tiny" status="info">Подтвердить</button>
+            </div>
+            <div class="col-md-4">
+                <button nbButton (click)="cancelEmail(user.username!)" size="tiny" status="danger">Отклонить</button>
+            </div>
+        </div>
+      </nb-list-item>
+    </nb-list>
+  </nb-card>
