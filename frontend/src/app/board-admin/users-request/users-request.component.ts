@@ -28,11 +28,19 @@ export class UsersRequestComponent implements OnInit {
       });
   }
 
-  confirmEmail(username: string): void {
+  confirmEmail(username: string, email: string): void {
     console.log("Подтверждено: " + username);
+
+    let user = {
+      name: username,
+      email: email
+    }
+
+    this.userService.sendMail(user);
+
   }
 
-  cancelEmail(username: string): void {
+  cancelEmail(username: string, email: string): void {
     console.log("Отказано: " + username);
   }
 

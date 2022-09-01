@@ -6,10 +6,10 @@
         <div class="col-md-7"></div>
         <div class="col-md-5 inline">
             <div class="col-md-4">
-                <button nbButton (click)="confirmEmail(user.username!)" size="tiny" status="info">Подтвердить</button>
+                <button nbButton (click)="confirmEmail(user.username!, user.email!)" size="tiny" status="info">Подтвердить</button>
             </div>
             <div class="col-md-4">
-                <button nbButton (click)="cancelEmail(user.username!)" size="tiny" status="danger">Отклонить</button>
+                <button nbButton (click)="cancelEmail(user.username!, user.email!)" size="tiny" status="danger">Отклонить</button>
             </div>
         </div>
       </nb-list-item>

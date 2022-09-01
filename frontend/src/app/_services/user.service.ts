@@ -16,6 +16,21 @@ export class UserService {
     return this.http.get<User[]>(API_URL + 'users');
   }
 
+  //
+  sendMail(user: any): void {
+    this.http.post('http://localhost:8080/sendMail', user).subscribe(
+      data => {
+        let res:any = data;
+        console.log(
+          "Succesfull register!!" + user.name + ". " + res.messages
+        )
+      },
+      err => {
+        console.log(err);
+      }
+    );;
+  }
+
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
   }

@@ -1,6 +1,7 @@
 const db = require("../models");
 const User = db.users;
 const Op = db.Sequelize.Op;
+const nodemailer = require("nodemailer");
 
 // получить всех пользователей из базы данных
 exports.findAll = (req, res) => {
@@ -18,6 +19,39 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
+exports.sendMail = (req, res) => {
+      console.log("request came");
+      let user = req.body;
+      sendMail(user, info => {
+        res.send(info);
+      })
+
+    async function sendMail(user, callback) {
+      let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: details.email,
+          pass: details.password
+        }
+      });
+
+    let mailOptions = {
+      from: '"Ilja" <kozlikov.ilja27@gmail.ru>', // sender address
+      to: user.email, // list of receivers
+      subject: "Wellcome to Fun Of Heuristic 👻", // Subject line
+      html: `<h1>Hi ${user.name}</h1><br>
+      <h4>Thanks for joining us</h4>`
+    };
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail(mailOptions);
+
+    callback(info);
+  }
+}
 
 exports.allAccess = (req, res) => {
   res.status(200).send("Public Content.");

@@ -16,6 +16,8 @@ module.exports = app => {
     next();
   });
 
+  app.post("/sendmail", controller.sendMail);
+
   app.get("/api/test/all", controller.allAccess);
 
   app.get(
